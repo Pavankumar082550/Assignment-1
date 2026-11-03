@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Examination Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Online Examination Portal</h1>
+</header>
+
+<main class="container">
+
+    <!-- Login Page -->
+    <section id="loginPage" class="page">
+        <h2>Student Login</h2>
+
+        <form id="loginForm">
+            <label>Username</label>
+            <input type="text" id="loginUsername" required>
+
+            <label>Password</label>
+            <input type="password" id="loginPassword" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p id="loginMessage" class="message"></p>
+
+        <button type="button" class="secondary" onclick="showForgotPassword()">
+            Forgot Password?
+        </button>
+
+        <p id="forgotMessage" class="message"></p>
+
+        <p>Don't have an account?</p>
+        <button type="button" onclick="showPage('registerPage')">
+            Create Account
+        </button>
+    </section>
+
+    <!-- Registration Page -->
+    <section id="registerPage" class="page hidden">
+        <h2>Create Student Account</h2>
+
+        <form id="registerForm">
+            <label>Full Name</label>
+            <input type="text" id="fullName" required>
+
+            <label>Username</label>
+            <input type="text" id="registerUsername" required>
+
+            <label>Email Address (Optional)</label>
+            <input type="email" id="email"
+                   placeholder="Enter your email address (optional)">
+
+            <label>Password</label>
+            <input type="password" id="registerPassword" required>
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p id="registerMessage" class="message"></p>
+
+        <button type="button" class="secondary"
+                onclick="showPage('loginPage')">
+            Back to Login
+        </button>
+    </section>
+
+    <!-- Student Dashboard -->
+    <section id="dashboardPage" class="page hidden">
+        <h2>Student Dashboard</h2>
+
+        <div class="profile">
+            <h3>Student Profile</h3>
+            <p><strong>Full Name:</strong> <span id="detailName"></span></p>
+            <p><strong>Username:</strong> <span id="detailUsername"></span></p>
+            <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+            <p><strong>Account Created:</strong> <span id="detailCreated"></span></p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalExams">0</h3>
+                <p>Exams Attempted</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="averageScore">0%</h3>
+                <p>Average Score</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="lastScore">0%</h3>
+                <p>Last Score</p>
+            </div>
+        </div>
+
+        <button type="button" onclick="startExam()">
+            Start Examination
+        </button>
+
+        <div class="profile">
+            <h3>Login Details</h3>
+            <p><strong>Last Login:</strong> <span id="lastLogin"></span></p>
+            <p><strong>Total Logins:</strong> <span id="loginCount"></span></p>
+            <p><strong>Last Logout:</strong> <span id="lastLogout"></span></p>
+
+            <h4>Login / Logout History</h4>
+            <ul id="activityHistory"></ul>
+        </div>
+
+        <div class="profile">
+            <h3>Examination History</h3>
+            <ul id="testHistory"></ul>
+        </div>
+
+        <button type="button" class="logout" onclick="logout()">
+            Logout
+        </button>
+    </section>
+
+    <!-- Examination Page -->
+    <section id="examPage" class="page hidden">
+        <h2>Online Examination</h2>
+
+        <div class="exam-info">
+            <p>Time Remaining: <span id="timer">10:00</span></p>
+            <p id="questionNumber"></p>
+        </div>
+
+        <h3 id="questionText"></h3>
+
+        <div id="options"></div>
+
+        <div class="exam-buttons">
+            <button type="button" class="secondary" onclick="previousQuestion()">
+                Previous
+            </button>
+
+            <button type="button" onclick="nextQuestion()">
+                Next
+            </button>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitExam()">
+            Submit Examination
+        </button>
+    </section>
+
+    <!-- Result Page -->
+    <section id="resultPage" class="page hidden">
+        <h2>Examination Result</h2>
+
+        <div class="result-card">
+            <h3 id="resultStatus"></h3>
+            <p><strong>Score:</strong> <span id="resultScore"></span></p>
+            <p><strong>Correct Answers:</strong> <span id="correctAnswers"></span></p>
+            <p><strong>Wrong Answers:</strong> <span id="wrongAnswers"></span></p>
+            <p><strong>Unanswered:</strong> <span id="unanswered"></span></p>
+            <p><strong>Percentage:</strong> <span id="percentage"></span></p>
+        </div>
+
+        <button type="button" onclick="showDashboard()">
+            Back to Dashboard
+        </button>
+
+        <button type="button" class="logout" onclick="logout()">
+            Logout
+        </button>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
